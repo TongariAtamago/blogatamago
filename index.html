@@ -32,15 +32,33 @@
         <nav class="nav">
           <ul>
             <li><a href="#/posts">Posts</a></li>
-            <li><a href="//github.com/chrisdiana/cms.js" target="_blank">Github</a></li>
             <li><a href="#/pages/about">About</a></li>
-            <li><a href="#/pages/links">Links</a></li>
+            <li><a href="//twitter.com/TongariAtamago">twitter</a></li>
           </ul>
         </nav>
       </header>
 
       <!-- CMS -->
-      <div id="cms"></div>
+      <div id="cms">
+        <!-- Post List Template -->
+          <div class="posts-list fade-in">
+            <% data.posts.forEach(function(post) { %>
+              <% if(!post.draft) { %>
+                <article class="post">
+                  <h1 class="post-title">
+                    <a href="<%= post.permalink %>"><%= post.title %></a>
+                  </h1>
+                  <time class="post-date">5/28/2015</time>
+                  <div class="post-content">
+                    <% if(post.excerpt) { %>
+                      <p><%= post.excerpt %></p>
+                    <% } %>
+                  </div>
+                </article>
+              <% } %>
+            <% }) %>
+          </div>
+      </div>
 
       <!-- Footer -->
       <footer class="footer">
